@@ -1,10 +1,20 @@
 import { projects } from '../data/projects'
 import agentclipzImage from '../assets/agentclipz.jpg'
-import studyguardImage from '../assets/studyguard.jpg'
+import studyguardImage from '../assets/studyguard.png'
+import scheduleAIImage from '../assets/scheduleai.png'
+import evincibleImage from '../assets/evincible.png'
+import openEnvImage from '../assets/openenv.png'
+import liturgyDisplayImage from '../assets/liturgydisplay.png'
+import hotspotImage from '../assets/hotspot.jpg'
 
 const projectImages: Record<string, string> = {
   AgentClipz: agentclipzImage,
   StudyGuard: studyguardImage,
+  'Schedule-AI': scheduleAIImage,
+  EVIncible: evincibleImage,
+  'OpenENV Hackathon': openEnvImage,
+  'Liturgy.Display': liturgyDisplayImage,
+  HotSpot: hotspotImage,
 }
 
 export default function AllProjects() {

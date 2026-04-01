@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import GitHubActivity from './components/GitHubActivity'
 import Experience from './components/Experience'
 import Projects from './components/Projects'
 import AllProjects from './components/AllProjects'
@@ -12,7 +11,6 @@ function HomePage() {
   return (
     <>
       <Hero />
-      <GitHubActivity />
       <Experience />
       <Projects />
     </>
