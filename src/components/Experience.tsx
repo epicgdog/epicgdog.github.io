@@ -17,7 +17,7 @@ export default function Experience() {
   return (
     <section id="experience" className="bg-[#f5f0e6] px-4 py-[78px] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-[22px] text-center text-3xl font-bold text-stone-900">Experience</h2>
+        <h2 className="mb-[22px] text-center text-4xl font-bold text-stone-900 sm:text-5xl">Experience</h2>
 
         <div className="mx-auto mb-[30px] flex w-fit rounded-full border border-[#d8cebc] bg-[#fff6e9] p-1">
           <button

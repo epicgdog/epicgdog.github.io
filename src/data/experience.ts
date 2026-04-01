@@ -2,6 +2,8 @@ import pacificInHomeCareLogo from '../assets/pacificinhomecare.png'
 import sjsuLogo from '../assets/sjsu.png'
 import sceLogo from '../assets/sce.png'
 import robloxLogo from '../assets/roblox.svg'
+import peerConnectionsLogo from '../assets/peerconnections.jpg'
+import theCoderSchoolLogo from '../assets/thecoderschool.jpg'
 
 export type ExperienceCategory = 'engineer' | 'education'
 
@@ -95,6 +97,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'Peer Mentor',
     company: 'Peer Connections',
+    icon: peerConnectionsLogo,
     iconLabel: 'PC',
     location: 'San Jose, CA',
     period: 'Aug. 2025 -- Present',
@@ -109,6 +112,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'Lead Instructor',
     company: 'theCoderSchool',
+    icon: theCoderSchoolLogo,
     iconLabel: 'TCS',
     location: 'Folsom, CA',
     period: 'Jul. 2025',

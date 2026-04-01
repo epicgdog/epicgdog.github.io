@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const navLinks = [
   { name: 'About', id: 'about' },
-  { name: 'Skills', id: 'skills' },
   { name: 'Experience', id: 'experience' },
   { name: 'Projects', id: 'projects' },
 ]
