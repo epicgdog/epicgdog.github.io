@@ -5,6 +5,8 @@ type ContributionDay = {
   count: number
 }
 
+const GRID_CELLS = 91
+
 export default function Hero() {
   const [contributions, setContributions] = React.useState<ContributionDay[]>([])
 
@@ -15,6 +17,12 @@ export default function Hero() {
     ]
 
     const loadContributions = async () => {
+      const today = new Date()
+      const todayIso = today.toISOString().slice(0, 10)
+      const start = new Date(today)
+      start.setDate(start.getDate() - 89)
+      const startIso = start.toISOString().slice(0, 10)
+
       for (const source of sources) {
         try {
           const response = await fetch(source)
@@ -29,7 +37,7 @@ export default function Hero() {
               date: item.date ?? '',
               count: Number(item.count ?? 0),
             }))
-            .filter((item: ContributionDay) => item.date)
+            .filter((item: ContributionDay) => item.date && item.date >= startIso && item.date <= todayIso)
             .sort((a: ContributionDay, b: ContributionDay) => a.date.localeCompare(b.date))
             .slice(-90)
 
@@ -51,10 +59,10 @@ export default function Hero() {
     return ['bg-white', 'bg-[#d4d4d4]', 'bg-[#a3a3a3]', 'bg-[#737373]', 'bg-[#404040]'][level]
   }
 
-  const paddedContributions = [
-    ...contributions,
-    ...Array.from({ length: Math.max(0, 106 - contributions.length) }, () => ({ date: '', count: 0 })),
-  ]
+  const paddedContributions = Array.from({ length: Math.max(0, GRID_CELLS - contributions.length) }, () => ({
+    date: '',
+    count: 0,
+  })).concat(contributions)
 
   return (
     <section id="about" className="bg-[#ece2d2] px-4 pb-[78px] pt-[126px] sm:px-6 lg:px-8">
@@ -101,21 +109,33 @@ export default function Hero() {
         </div>
         </div>
 
-        <div className="bg-white p-3">
+        <div className="mx-auto flex h-[320px] w-[320px] items-center justify-center bg-white p-4 lg:mx-0">
           {contributions.length > 0 ? (
-            <div className="grid aspect-square w-full max-w-[320px] grid-cols-14 gap-[2px]">
+            <div
+              className="grid gap-[3px]"
+              style={{
+                gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                gridAutoFlow: 'column',
+              }}
+            >
               {paddedContributions.map((day, i) => (
                 <div
                   key={i}
-                  className={`aspect-square ${getIntensity(day.count)}`}
+                  className={`h-4 w-4 ${getIntensity(day.count)}`}
                   title={day.date ? `${day.count} contributions` : ''}
                 />
               ))}
             </div>
           ) : (
-            <div className="grid aspect-square w-full max-w-[320px] grid-cols-14 gap-[2px]">
-              {Array.from({ length: 106 }).map((_, i) => (
-                <div key={i} className="aspect-square bg-[#f3f4f6]" />
+            <div
+              className="grid gap-[3px]"
+              style={{
+                gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                gridAutoFlow: 'column',
+              }}
+            >
+              {Array.from({ length: GRID_CELLS }).map((_, i) => (
+                <div key={i} className="h-4 w-4 bg-[#f3f4f6]" />
               ))}
             </div>
           )}
