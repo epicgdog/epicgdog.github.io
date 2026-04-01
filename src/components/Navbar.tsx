@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
+import resumePdf from '../assets/gerard_consuelo_resume.pdf'
 
 const navLinks = [
   { name: 'About', id: 'about' },
@@ -49,6 +50,14 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
+            <a
+              href={resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-md bg-stone-900 px-3 py-1.5 text-sm text-white transition-colors hover:bg-stone-700"
+            >
+              Resume
+            </a>
           </div>
 
           <button
@@ -80,6 +89,15 @@ export default function Navbar() {
                 {link.name}
               </button>
             ))}
+            <a
+              href={resumePdf}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block rounded-md px-3 py-2 text-stone-700 hover:bg-[#eee3d2] hover:text-stone-900"
+              onClick={() => setIsOpen(false)}
+            >
+              Resume
+            </a>
           </div>
         </div>
       )}
