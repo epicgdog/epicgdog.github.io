@@ -1,14 +1,14 @@
 export default function Hero() {
   return (
-    <section id="about" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+    <section id="about" className="px-4 pb-20 pt-32 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto text-center">
-        <h1 className="text-5xl sm:text-6xl font-bold text-gray-900 mb-4">
+        <h1 className="mb-4 text-5xl font-bold text-stone-900 sm:text-6xl">
           Gerard Consuelo
         </h1>
-        <p className="text-xl sm:text-2xl text-gray-600 mb-6">
+        <p className="mb-6 text-xl text-stone-700 sm:text-2xl">
           Software Developer & CS Student at SJSU
         </p>
-        <p className="text-gray-500 max-w-2xl mx-auto mb-8">
+        <p className="mx-auto mb-8 max-w-2xl text-stone-600">
           Building real-time systems, AI agents, and developer tools. Passionate about automation, distributed systems, and creating impactful software solutions.
         </p>
         <div className="flex justify-center gap-4">

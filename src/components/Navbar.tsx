@@ -2,17 +2,17 @@ import { useState } from 'react'
 
 const navLinks = [
   { name: 'About', href: '#about' },
-  { name: 'Education', href: '#education' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Experience', href: '#experience' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Education', href: '#education' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-sm border-b border-gray-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#d9cfbe] bg-[#f8f2e8]/85 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <a href="#about" className="text-xl font-bold text-gray-900">
@@ -24,7 +24,7 @@ export default function Navbar() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-gray-600 hover:text-gray-900 transition-colors"
+                className="text-stone-600 transition-colors hover:text-stone-900"
               >
                 {link.name}
               </a>
@@ -48,13 +48,13 @@ export default function Navbar() {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-gray-200">
+        <div className="md:hidden border-t border-[#d9cfbe] bg-[#f8f2e8]">
           <div className="px-4 py-2 space-y-1">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="block px-3 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md"
+                className="block rounded-md px-3 py-2 text-stone-600 hover:bg-[#eee3d2] hover:text-stone-900"
                 onClick={() => setIsOpen(false)}
               >
                 {link.name}

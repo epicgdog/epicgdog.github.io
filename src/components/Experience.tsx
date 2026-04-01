@@ -1,7 +1,24 @@
+import discordLogo from '../assets/discord.svg'
+import robloxLogo from '../assets/roblox.svg'
+
 const experiences = [
+  {
+    title: 'Peer Mentor',
+    company: 'Peer Connections',
+    iconLabel: 'PC',
+    location: 'San Jose, CA',
+    period: 'Aug. 2025 -- Present',
+    accomplishments: [
+      'Mentored Calculus I workshop students with academic strategies, increasing pass rate by 15%',
+      'Directed 5 academic workshops with a 95%+ satisfaction score through clear presentation and facilitation',
+      'Facilitated 50+ mentoring and tutoring sessions across 7+ CS and MATH courses to strengthen problem-solving skills',
+    ],
+  },
   {
     title: 'Software Developer',
     company: 'Software and Computer Engineering Society (SCE)',
+    icon: discordLogo,
+    iconLabel: 'SCE',
     location: 'San Jose, CA',
     period: 'Aug. 2024 -- Present',
     accomplishments: [
@@ -13,6 +30,7 @@ const experiences = [
   {
     title: 'Software Engineer Intern',
     company: 'SJSU College of Engineering',
+    iconLabel: 'SJSU',
     location: 'San Jose, CA',
     period: 'May 2025 -- Aug. 2025',
     accomplishments: [
@@ -22,8 +40,22 @@ const experiences = [
     ],
   },
   {
+    title: 'Game Developer',
+    company: 'Roblox',
+    icon: robloxLogo,
+    iconLabel: 'Roblox',
+    location: 'Remote',
+    period: 'Aug. 2020 -- Aug. 2023',
+    accomplishments: [
+      'Architected an NPC system in LuaU with shared pathfinding, scaling from 100 to 300+ agents under 15ms',
+      'Achieved sub-4ms hit registration in a custom FPS system through raycasting and client-side rendering',
+      'Authored 100+ Roblox DevForum posts with 10+ accepted solutions, demonstrating strong communication and debugging skills',
+    ],
+  },
+  {
     title: 'Lead Instructor',
     company: 'theCoderSchool',
+    iconLabel: 'TCS',
     location: 'Folsom, CA',
     period: 'Jul. 2025',
     accomplishments: [
@@ -36,33 +68,39 @@ const experiences = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="experience" className="bg-[#f1e9db] px-4 py-20 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
+        <h2 className="mb-12 text-center text-3xl font-bold text-stone-900">
           Experience
         </h2>
         <div className="space-y-8 max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
             <div
               key={index}
-              className="relative pl-8 border-l-2 border-gray-200"
+              className="relative rounded-xl border border-[#d8cebc] bg-[#fffaf1] p-6 pl-10"
             >
-              <div className="absolute -left-2 top-0 w-4 h-4 rounded-full bg-blue-500" />
-              <div className="mb-2">
-                <h3 className="text-xl font-semibold text-gray-900">
+              <div className="mb-2 flex items-start gap-4">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#c8bca8] bg-[#f3e8d5]">
+                  {exp.icon ? (
+                    <img src={exp.icon} alt={`${exp.company} icon`} className="h-7 w-7" />
+                  ) : (
+                    <span className="text-xs font-semibold text-stone-700">{exp.iconLabel}</span>
+                  )}
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-semibold text-stone-900">
                   {exp.title}
-                </h3>
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-gray-600">
-                  <span>{exp.company} | {exp.location}</span>
-                  <span className="text-sm text-gray-500 mt-1 sm:mt-0">
-                    {exp.period}
-                  </span>
+                  </h3>
+                  <div className="flex flex-col text-stone-700 sm:flex-row sm:items-center sm:justify-between">
+                    <span>{exp.company} | {exp.location}</span>
+                    <span className="mt-1 text-sm text-stone-500 sm:mt-0">{exp.period}</span>
+                  </div>
                 </div>
               </div>
               <ul className="space-y-2 mt-4">
                 {exp.accomplishments.map((item, i) => (
-                  <li key={i} className="flex items-start gap-2 text-gray-600">
-                    <span className="text-blue-500 mt-1.5 shrink-0">•</span>
+                  <li key={i} className="flex items-start gap-2 text-stone-700">
+                    <span className="mt-1.5 shrink-0 text-amber-700">•</span>
                     <span>{item}</span>
                   </li>
                 ))}
