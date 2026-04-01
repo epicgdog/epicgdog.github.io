@@ -78,6 +78,21 @@ export const experiences: ExperienceItem[] = [
     tags: ['Go', 'JavaScript', 'React/Next.js'],
   },
   {
+    title: 'B.S. Computer Science Student',
+    company: 'San Jose State University',
+    icon: sjsuLogo,
+    iconLabel: 'SJSU',
+    location: 'San Jose, CA',
+    period: 'Expected Graduation: May 2027',
+    category: 'education',
+    accomplishments: [
+      "GPA: 3.93, 2x President's Scholar Award",
+      'Coursework: Data Structures and Algorithms, Operating Systems, Network Security',
+      'Focused on systems, cloud, and applied AI through academic and project work',
+    ],
+    tags: ['C', 'Java'],
+  },
+  {
     title: 'Peer Mentor',
     company: 'Peer Connections',
     iconLabel: 'PC',

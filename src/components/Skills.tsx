@@ -16,18 +16,18 @@ export default function Skills() {
   }, [hovered])
 
   return (
-    <section id="skills" className="bg-[#efe6d8] px-4 py-8 sm:px-6 lg:px-8">
+    <section id="skills" className="bg-[#f5f0e6] px-4 py-[30px] sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <div className="relative overflow-hidden rounded-2xl border border-[#d7cbb7] bg-[#fff9ee] py-5">
+        <div className="relative overflow-hidden rounded-2xl border border-[#d7cbb7] bg-[#fff9ee] py-[18px]">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#fff9ee] to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#fff9ee] to-transparent" />
 
-          <div className="skills-marquee flex w-max gap-3 px-4">
+          <div className="skills-marquee flex w-max gap-3 px-[14px]">
             {[...marqueeItems, ...marqueeItems].map((skill, index) => (
               <button
                 key={`${skill}-${index}`}
                 type="button"
-                className="skill-pill rounded-full border border-[#d8ccb8] bg-[#f6ecdd] px-4 py-2 text-sm font-medium text-stone-700"
+                className="skill-pill rounded-full border border-[#d8ccb8] bg-[#f6ecdd] px-[14px] py-[6px] text-sm font-medium text-stone-700"
                 onMouseMove={(event) =>
                   setHovered({ skill, x: event.clientX + 16, y: event.clientY + 16 })
                 }

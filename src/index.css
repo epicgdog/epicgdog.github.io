@@ -31,3 +31,38 @@ html {
   transform: translateY(-2px) scale(1.03);
   background-color: #efdfc8;
 }
+
+.project-card {
+  animation-duration: 260ms;
+  animation-timing-function: ease;
+}
+
+.project-card-next {
+  animation-name: projectSlideNext;
+}
+
+.project-card-prev {
+  animation-name: projectSlidePrev;
+}
+
+@keyframes projectSlideNext {
+  0% {
+    opacity: 0;
+    transform: translateX(18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes projectSlidePrev {
+  0% {
+    opacity: 0;
+    transform: translateX(-18px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
