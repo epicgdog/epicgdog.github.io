@@ -6,6 +6,8 @@ import evincibleImage from '../assets/evincible.png'
 import openEnvImage from '../assets/openenv.png'
 import liturgyDisplayImage from '../assets/liturgydisplay.png'
 import hotspotImage from '../assets/hotspot.jpg'
+import sowAgentImage from '../assets/sowagent.JPG'
+import syllAIImage from '../assets/syllai.JPG'
 
 const projectImages: Record<string, string> = {
   AgentClipz: agentclipzImage,
@@ -15,6 +17,8 @@ const projectImages: Record<string, string> = {
   'OpenENV Hackathon': openEnvImage,
   'Liturgy.Display': liturgyDisplayImage,
   HotSpot: hotspotImage,
+  'sow-agent': sowAgentImage,
+  'Syll.AI': syllAIImage,
 }
 
 export default function AllProjects() {

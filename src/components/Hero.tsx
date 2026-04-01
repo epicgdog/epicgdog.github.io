@@ -1,14 +1,15 @@
 export default function Hero() {
   return (
     <section id="about" className="bg-[#ece2d2] px-4 pb-[78px] pt-[126px] sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto text-center">
-        <h1 className="mb-[14px] text-6xl font-bold text-stone-900 sm:text-7xl">
-          Gerard Consuelo
-        </h1>
-        <p className="mx-auto mb-[30px] max-w-2xl text-stone-600">
-          Passionate about automation, distributed systems, and creating impactful software solutions. Building real-time systems, AI agents, and developer tools.
-        </p>
-        <div className="flex justify-center gap-[14px]">
+      <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+        <div>
+          <h1 className="mb-[14px] text-left text-6xl font-bold text-stone-900 sm:text-7xl">
+            Gerard Consuelo
+          </h1>
+          <p className="mb-[30px] max-w-2xl text-left text-stone-600">
+            Passionate about automation, distributed systems, and creating impactful software solutions. Building real-time systems, AI agents, and developer tools.
+          </p>
+          <div className="flex flex-wrap gap-[14px]">
           <a
             href="https://github.com/epicgdog"
             target="_blank"
@@ -41,8 +42,9 @@ export default function Hero() {
             Email
           </a>
         </div>
+        </div>
 
-        <div className="mx-auto mt-8 max-w-5xl rounded-2xl border border-[#d8cebc] bg-[#fffaf1] p-3 sm:p-4">
+        <div className="rounded-2xl border border-[#d8cebc] bg-[#ece2d2] p-3 sm:p-4">
           <a
             href="https://github.com/epicgdog"
             target="_blank"
@@ -50,13 +52,13 @@ export default function Hero() {
             className="block"
           >
             <img
-              src="https://github-readme-stats.vercel.app/api?username=epicgdog&show_icons=true&include_all_commits=true&count_private=true&hide_title=true&hide_rank=true&theme=transparent&icon_color=d97706&text_color=57534e"
-              alt="GitHub stats for epicgdog"
-              className="mx-auto w-full max-w-3xl"
+              src="https://github-readme-stats.vercel.app/api?username=epicgdog&show_icons=true&include_all_commits=true&count_private=true&hide_title=true&hide_rank=true&theme=transparent&icon_color=15803d&text_color=57534e&ring_color=16a34a"
+              alt="GitHub stats"
+              className="w-full"
               loading="lazy"
             />
             <img
-              src="https://github-readme-activity-graph.vercel.app/graph?username=epicgdog&bg_color=fffaf1&color=57534e&line=d97706&point=a8a29e&area=true&area_color=f3e8d5&hide_border=true"
+              src="https://ghchart.rshah.org/16a34a/epicgdog"
               alt="GitHub contribution activity graph"
               className="mt-2 w-full rounded-lg"
               loading="lazy"
