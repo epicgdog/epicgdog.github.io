@@ -1,4 +1,24 @@
+import React from 'react'
+
 export default function Hero() {
+  const [contributions, setContributions] = React.useState<{ date: string; count: number }[]>([])
+
+  React.useEffect(() => {
+    fetch('https://github-contributions-api.vercel.app/v1/epicgdog')
+      .then(res => res.json())
+      .then(data => {
+        const contris = data.contributions || []
+        const lastYear = contris.slice(-365)
+        setContributions(lastYear)
+      })
+      .catch(() => {})
+  }, [])
+
+  const getIntensity = (count: number) => {
+    const level = count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : 4
+    return ['bg-white', 'bg-[#d4d4d4]', 'bg-[#a3a3a3]', 'bg-[#737373]', 'bg-[#404040]'][level]
+  }
+
   return (
     <section id="about" className="bg-[#ece2d2] px-4 pb-[78px] pt-[126px] sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-center">
@@ -44,26 +64,24 @@ export default function Hero() {
         </div>
         </div>
 
-        <div className="rounded-2xl border border-[#d8cebc] bg-[#ece2d2] p-3 sm:p-4">
-          <a
-            href="https://github.com/epicgdog"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block"
-          >
-            <img
-              src="https://github-readme-stats.vercel.app/api?username=epicgdog&show_icons=true&include_all_commits=true&count_private=true&hide_title=true&hide_rank=true&theme=transparent&icon_color=15803d&text_color=57534e&ring_color=16a34a"
-              alt="GitHub stats"
-              className="w-full"
-              loading="lazy"
-            />
-            <img
-              src="https://ghchart.rshah.org/16a34a/epicgdog"
-              alt="GitHub contribution activity graph"
-              className="mt-2 w-full rounded-lg"
-              loading="lazy"
-            />
-          </a>
+        <div className="bg-white p-2">
+          {contributions.length > 0 ? (
+            <div className="grid grid-cols-[repeat(10,1fr)] gap-[2px]">
+              {contributions.slice(-90).map((day, i) => (
+                <div
+                  key={i}
+                  className={`aspect-square ${getIntensity(day.count)}`}
+                  title={`${day.count} contributions`}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-[repeat(10,1fr)] gap-[2px]">
+              {Array.from({ length: 90 }).map((_, i) => (
+                <div key={i} className="aspect-square bg-white" />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </section>
