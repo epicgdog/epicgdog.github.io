@@ -1,23 +1,60 @@
 import React from 'react'
 
+type ContributionDay = {
+  date: string
+  count: number
+}
+
 export default function Hero() {
-  const [contributions, setContributions] = React.useState<{ date: string; count: number }[]>([])
+  const [contributions, setContributions] = React.useState<ContributionDay[]>([])
 
   React.useEffect(() => {
-    fetch('https://github-contributions-api.vercel.app/v1/epicgdog')
-      .then(res => res.json())
-      .then(data => {
-        const contris = data.contributions || []
-        const lastYear = contris.slice(-365)
-        setContributions(lastYear)
-      })
-      .catch(() => {})
+    const sources = [
+      'https://github-contributions-api.jogruber.de/v4/epicgdog',
+      'https://github-contributions.vercel.app/api/v1/epicgdog',
+    ]
+
+    const loadContributions = async () => {
+      for (const source of sources) {
+        try {
+          const response = await fetch(source)
+          if (!response.ok) {
+            continue
+          }
+
+          const data = await response.json()
+          const items = Array.isArray(data?.contributions) ? data.contributions : []
+          const normalized: ContributionDay[] = items
+            .map((item: { date?: string; count?: number }) => ({
+              date: item.date ?? '',
+              count: Number(item.count ?? 0),
+            }))
+            .filter((item: ContributionDay) => item.date)
+            .sort((a: ContributionDay, b: ContributionDay) => a.date.localeCompare(b.date))
+            .slice(-90)
+
+          if (normalized.length > 0) {
+            setContributions(normalized)
+            return
+          }
+        } catch {
+          // try next source
+        }
+      }
+    }
+
+    void loadContributions()
   }, [])
 
   const getIntensity = (count: number) => {
     const level = count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : 4
     return ['bg-white', 'bg-[#d4d4d4]', 'bg-[#a3a3a3]', 'bg-[#737373]', 'bg-[#404040]'][level]
   }
+
+  const paddedContributions = [
+    ...contributions,
+    ...Array.from({ length: Math.max(0, 106 - contributions.length) }, () => ({ date: '', count: 0 })),
+  ]
 
   return (
     <section id="about" className="bg-[#ece2d2] px-4 pb-[78px] pt-[126px] sm:px-6 lg:px-8">
@@ -64,21 +101,21 @@ export default function Hero() {
         </div>
         </div>
 
-        <div className="bg-white p-2">
+        <div className="bg-white p-3">
           {contributions.length > 0 ? (
-            <div className="grid grid-cols-[repeat(10,1fr)] gap-[2px]">
-              {contributions.slice(-90).map((day, i) => (
+            <div className="grid aspect-square w-full max-w-[320px] grid-cols-14 gap-[2px]">
+              {paddedContributions.map((day, i) => (
                 <div
                   key={i}
                   className={`aspect-square ${getIntensity(day.count)}`}
-                  title={`${day.count} contributions`}
+                  title={day.date ? `${day.count} contributions` : ''}
                 />
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-[repeat(10,1fr)] gap-[2px]">
-              {Array.from({ length: 90 }).map((_, i) => (
-                <div key={i} className="aspect-square bg-white" />
+            <div className="grid aspect-square w-full max-w-[320px] grid-cols-14 gap-[2px]">
+              {Array.from({ length: 106 }).map((_, i) => (
+                <div key={i} className="aspect-square bg-[#f3f4f6]" />
               ))}
             </div>
           )}
