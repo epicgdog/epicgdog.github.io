@@ -70,12 +70,12 @@ export default function Experience() {
               </div>
 
               {exp.inProgress ? (
-                 <div className="rounded-lg border border-amber-200 bg-amber-50 p-[10px] text-sm text-amber-900">
-                  <p className="font-semibold">In progress</p>
+                <div className="mt-[10px] text-sm text-stone-700">
+                  <p className="italic">In progress</p>
                   <p className="mt-1">Current focus: {(exp.focusAreas ?? []).join(' | ')}</p>
                 </div>
               ) : (
-                 <ul className="mt-[14px] space-y-2">
+                <ul className="mt-[14px] space-y-1">
                   {(exp.accomplishments ?? []).map((item) => (
                     <li key={item} className="flex items-start gap-2 text-stone-700">
                       <span className="mt-1.5 shrink-0 text-amber-700">•</span>

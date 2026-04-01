@@ -112,6 +112,7 @@ export default function Hero() {
           <p className="mb-[30px] max-w-2xl text-left text-stone-600">
             Passionate about automation, distributed systems, and creating impactful software solutions. Building real-time systems, AI agents, and developer tools.
           </p>
+          <p className="mb-[18px] text-left text-sm text-stone-500">San Jose, CA</p>
           <div className="flex flex-wrap gap-[14px]">
           <a
             href="https://github.com/epicgdog"
@@ -147,7 +148,7 @@ export default function Hero() {
         </div>
         </div>
 
-        <div className="mx-auto flex h-[320px] w-[320px] items-center justify-center bg-[#ece2d2] p-4 lg:mx-0">
+        <div className="mx-auto flex h-[320px] w-[320px] items-center justify-center bg-[#ece2d2] p-4 lg:mx-0 lg:translate-x-6">
           <div>
             {contributions.length > 0 ? (
               <div

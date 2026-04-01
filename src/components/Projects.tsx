@@ -23,15 +23,15 @@ const projectImages: Record<string, string> = {
 }
 
 export default function Projects() {
-  const [startIndex, setStartIndex] = useState(0)
+  const [pageIndex, setPageIndex] = useState(0)
   const [visibleCount, setVisibleCount] = useState(3)
 
   const goToPrevious = () => {
-    setStartIndex((index) => (index === 0 ? projects.length - 1 : index - 1))
+    setPageIndex((page) => (page === 0 ? pageCount - 1 : page - 1))
   }
 
   const goToNext = () => {
-    setStartIndex((index) => (index === projects.length - 1 ? 0 : index + 1))
+    setPageIndex((page) => (page === pageCount - 1 ? 0 : page + 1))
   }
 
   useEffect(() => {
@@ -50,9 +50,15 @@ export default function Projects() {
     return () => window.removeEventListener('resize', updateVisibleCount)
   }, [])
 
+  const pageCount = Math.max(1, Math.ceil(projects.length / visibleCount))
+
+  useEffect(() => {
+    setPageIndex((page) => Math.min(page, pageCount - 1))
+  }, [pageCount])
+
   const visibleProjects = Array.from({ length: visibleCount }, (_, offset) => {
-    const index = (startIndex + offset) % projects.length
-    return projects[index]
+    const index = pageIndex * visibleCount + offset
+    return projects[index] ?? null
   })
 
   return (
@@ -83,75 +89,81 @@ export default function Projects() {
             <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#f5f0e6] via-[#f5f0e6]/70 to-transparent" />
             <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#f5f0e6] via-[#f5f0e6]/70 to-transparent" />
 
-            <div key={startIndex} className="project-strip grid grid-cols-1 gap-4 px-6 md:grid-cols-2 xl:grid-cols-3">
-              {visibleProjects.map((project, index) => (
-                <a
-                  key={`${project.name}-${startIndex}-${index}`}
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-card group block rounded-xl border border-[#d8cebc] bg-[#fffaf1] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#c7bba7] hover:shadow-lg"
-                >
-                  {projectImages[project.name] ? (
-                    <div className="mb-3 overflow-hidden rounded-lg border border-[#c7bba7] bg-[#f3e8d5]">
-                      <img
-                        src={projectImages[project.name]}
-                        alt={`${project.name} project`}
-                        className="aspect-video w-full object-cover transition duration-300 group-hover:scale-[1.03]"
-                      />
+            <div key={pageIndex} className="project-strip grid grid-cols-1 gap-4 px-6 md:grid-cols-2 xl:grid-cols-3">
+              {visibleProjects.map((project, index) => {
+                if (!project) {
+                  return <div key={`empty-${pageIndex}-${index}`} className="rounded-xl p-4" aria-hidden="true" />
+                }
+
+                return (
+                  <a
+                    key={`${project.name}-${pageIndex}-${index}`}
+                    href={project.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card group block rounded-xl border border-[#d8cebc] bg-[#fffaf1] p-4 transition-all duration-300 hover:-translate-y-1 hover:border-[#c7bba7] hover:shadow-lg"
+                  >
+                    {projectImages[project.name] ? (
+                      <div className="mb-3 overflow-hidden rounded-lg border border-[#c7bba7] bg-[#f3e8d5]">
+                        <img
+                          src={projectImages[project.name]}
+                          alt={`${project.name} project`}
+                          className="aspect-video w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                        />
+                      </div>
+                    ) : (
+                      <div className="mb-3 flex aspect-video items-center justify-center rounded-lg border border-dashed border-[#c7bba7] bg-[#f3e8d5] text-xs font-medium text-stone-600 transition group-hover:bg-[#efdfc8]">
+                        {project.name}
+                      </div>
+                    )}
+
+                    <div className="mb-2 flex items-start justify-between gap-2">
+                      <h3 className="text-lg font-semibold text-stone-900 transition-colors group-hover:text-amber-700">
+                        {project.name}
+                      </h3>
+                      <svg
+                        className="mt-0.5 h-4 w-4 shrink-0 text-stone-400 transition-colors group-hover:text-amber-700"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
                     </div>
-                  ) : (
-                    <div className="mb-3 flex aspect-video items-center justify-center rounded-lg border border-dashed border-[#c7bba7] bg-[#f3e8d5] text-xs font-medium text-stone-600 transition group-hover:bg-[#efdfc8]">
-                      {project.name}
-                    </div>
-                  )}
 
-                  <div className="mb-2 flex items-start justify-between gap-2">
-                    <h3 className="text-lg font-semibold text-stone-900 transition-colors group-hover:text-amber-700">
-                      {project.name}
-                    </h3>
-                    <svg
-                      className="mt-0.5 h-4 w-4 shrink-0 text-stone-400 transition-colors group-hover:text-amber-700"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                      />
-                    </svg>
-                  </div>
+                    {project.award && (
+                      <span className="mb-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800">
+                        {project.award}
+                      </span>
+                    )}
 
-                  {project.award && (
-                    <span className="mb-2 inline-block rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-800">
-                      {project.award}
-                    </span>
-                  )}
-
-                  <p className="mb-2 text-xs text-stone-600">{project.tech}</p>
-                  <ul className="space-y-1.5">
-                    {project.accomplishments.slice(0, 2).map((item) => (
-                      <li key={item} className="flex items-start gap-1.5 text-xs text-stone-700">
-                        <span className="mt-1 shrink-0 text-amber-600">•</span>
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {(project.tags ?? []).length > 0 && (
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {(project.tags ?? []).map((tag) => (
-                        <span key={tag} className="rounded-full bg-[#f0e3cf] px-2 py-0.5 text-[11px] font-medium text-stone-700">
-                          {tag}
-                        </span>
+                    <p className="mb-2 text-xs text-stone-600">{project.tech}</p>
+                    <ul className="space-y-1.5">
+                      {project.accomplishments.slice(0, 2).map((item) => (
+                        <li key={item} className="flex items-start gap-1.5 text-xs text-stone-700">
+                          <span className="mt-1 shrink-0 text-amber-600">•</span>
+                          <span>{item}</span>
+                        </li>
                       ))}
-                    </div>
-                  )}
-                </a>
-              ))}
+                    </ul>
+
+                    {(project.tags ?? []).length > 0 && (
+                      <div className="mt-2 flex flex-wrap gap-1.5">
+                        {(project.tags ?? []).map((tag) => (
+                          <span key={tag} className="rounded-full bg-[#f0e3cf] px-2 py-0.5 text-[11px] font-medium text-stone-700">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </a>
+                )
+              })}
             </div>
           </div>
         </div>
