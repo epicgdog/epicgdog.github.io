@@ -6,8 +6,8 @@ import evincibleImage from '../assets/evincible.png'
 import openEnvImage from '../assets/openenv.png'
 import liturgyDisplayImage from '../assets/liturgydisplay.png'
 import hotspotImage from '../assets/hotspot.jpg'
-import sowAgentImage from '../assets/sowagent.JPG'
-import syllAIImage from '../assets/syllai.JPG'
+import sowAgentImage from '../assets/sowagent.webp'
+import syllAIImage from '../assets/syllai.webp'
 
 const projectImages: Record<string, string> = {
   AgentClipz: agentclipzImage,
@@ -42,6 +42,8 @@ export default function AllProjects() {
                     src={projectImages[project.name]}
                     alt={`${project.name} project`}
                     className="aspect-video w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               ) : (
