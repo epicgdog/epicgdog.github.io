@@ -9,6 +9,7 @@ const GRID_CELLS = 91
 
 export default function Hero() {
   const [contributions, setContributions] = React.useState<ContributionDay[]>([])
+  const [visibleSquares, setVisibleSquares] = React.useState(0)
 
   React.useEffect(() => {
     const sources = [
@@ -53,6 +54,27 @@ export default function Hero() {
 
     void loadContributions()
   }, [])
+
+  React.useEffect(() => {
+    const totalSquares = contributions.length > 0 ? GRID_CELLS : 0
+    if (totalSquares === 0) {
+      setVisibleSquares(0)
+      return
+    }
+
+    setVisibleSquares(0)
+    const timer = window.setInterval(() => {
+      setVisibleSquares((current) => {
+        if (current >= totalSquares) {
+          window.clearInterval(timer)
+          return totalSquares
+        }
+        return current + 1
+      })
+    }, 16)
+
+    return () => window.clearInterval(timer)
+  }, [contributions])
 
   const getIntensity = (count: number) => {
     const level = count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : 4
@@ -121,7 +143,9 @@ export default function Hero() {
               {paddedContributions.map((day, i) => (
                 <div
                   key={i}
-                  className={`h-4 w-4 ${getIntensity(day.count)}`}
+                  className={`h-4 w-4 transition-opacity duration-150 ${getIntensity(day.count)} ${
+                    i < visibleSquares ? 'opacity-100' : 'opacity-0'
+                  }`}
                   title={day.date ? `${day.count} contributions` : ''}
                 />
               ))}

@@ -6,13 +6,20 @@ import Projects from './components/Projects'
 import AllProjects from './components/AllProjects'
 import AllExperience from './components/AllExperience'
 import Footer from './components/Footer'
+import SectionReveal from './components/SectionReveal'
 
 function HomePage() {
   return (
     <>
-      <Hero />
-      <Experience />
-      <Projects />
+      <SectionReveal>
+        <Hero />
+      </SectionReveal>
+      <SectionReveal>
+        <Experience />
+      </SectionReveal>
+      <SectionReveal>
+        <Projects />
+      </SectionReveal>
     </>
   )
 }
