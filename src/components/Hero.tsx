@@ -78,8 +78,10 @@ export default function Hero() {
 
   const getIntensity = (count: number) => {
     const level = count === 0 ? 0 : count <= 2 ? 1 : count <= 5 ? 2 : count <= 10 ? 3 : 4
-    return ['bg-white', 'bg-[#d4d4d4]', 'bg-[#a3a3a3]', 'bg-[#737373]', 'bg-[#404040]'][level]
+    return ['bg-[#ece2d2]', 'bg-[#d4d4d4]', 'bg-[#a3a3a3]', 'bg-[#737373]', 'bg-[#404040]'][level]
   }
+
+  const totalContributions = contributions.reduce((sum, day) => sum + day.count, 0)
 
   const paddedContributions = Array.from({ length: Math.max(0, GRID_CELLS - contributions.length) }, () => ({
     date: '',
@@ -132,37 +134,42 @@ export default function Hero() {
         </div>
 
         <div className="mx-auto flex h-[320px] w-[320px] items-center justify-center bg-[#ece2d2] p-4 lg:mx-0">
-          {contributions.length > 0 ? (
-            <div
-              className="grid gap-[3px]"
-              style={{
-                gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
-                gridAutoFlow: 'column',
-              }}
-            >
-              {paddedContributions.map((day, i) => (
-                <div
-                  key={i}
-                  className={`h-4 w-4 transition-opacity duration-150 ${getIntensity(day.count)} ${
-                    i < visibleSquares ? 'opacity-100' : 'opacity-0'
-                  }`}
-                  title={day.date ? `${day.count} contributions` : ''}
-                />
-              ))}
-            </div>
-          ) : (
-            <div
-              className="grid gap-[3px]"
-              style={{
-                gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
-                gridAutoFlow: 'column',
-              }}
-            >
-              {Array.from({ length: GRID_CELLS }).map((_, i) => (
-                <div key={i} className="h-4 w-4 bg-[#f3f4f6]" />
-              ))}
-            </div>
-          )}
+          <div>
+            {contributions.length > 0 ? (
+              <div
+                className="grid gap-[3px]"
+                style={{
+                  gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                  gridAutoFlow: 'column',
+                }}
+              >
+                {paddedContributions.map((day, i) => (
+                  <div
+                    key={i}
+                    className={`h-4 w-4 transition-opacity duration-150 ${getIntensity(day.count)} ${
+                      i < visibleSquares ? 'opacity-100' : 'opacity-0'
+                    }`}
+                    title={day.date ? `${day.count} contributions` : ''}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div
+                className="grid gap-[3px]"
+                style={{
+                  gridTemplateRows: 'repeat(7, minmax(0, 1fr))',
+                  gridAutoFlow: 'column',
+                }}
+              >
+                {Array.from({ length: GRID_CELLS }).map((_, i) => (
+                  <div key={i} className="h-4 w-4 bg-[#ece2d2]" />
+                ))}
+              </div>
+            )}
+            <p className="mt-3 text-center text-sm text-stone-700">
+              {totalContributions} contributions in the last 3 months
+            </p>
+          </div>
         </div>
       </div>
     </section>
