@@ -29,7 +29,7 @@ export default function Experience() {
                 : 'text-stone-700 hover:bg-[#f0e3cf]'
             }`}
           >
-            Engineer
+            Software
           </button>
           <button
             type="button"

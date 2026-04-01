@@ -12,8 +12,8 @@ import Footer from './components/Footer'
 function HomePage() {
   return (
     <>
-      <Education />
       <Hero />
+      <Education />
       <Skills />
       <Experience />
       <Projects />
