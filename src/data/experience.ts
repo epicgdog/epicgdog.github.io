@@ -1,9 +1,9 @@
-import pacificInHomeCareLogo from '../assets/pacificinhomecare.png'
-import sjsuLogo from '../assets/sjsu.png'
-import sceLogo from '../assets/sce.png'
+import pacificInHomeCareLogo from '../assets/pacificinhomecare.webp'
+import sjsuLogo from '../assets/sjsu.webp'
+import sceLogo from '../assets/sce.webp'
 import robloxLogo from '../assets/roblox.svg'
-import peerConnectionsLogo from '../assets/peerconnections.jpg'
-import theCoderSchoolLogo from '../assets/thecoderschool.jpg'
+import peerConnectionsLogo from '../assets/peerconnections.webp'
+import theCoderSchoolLogo from '../assets/thecoderschool.webp'
 
 export type ExperienceCategory = 'engineer' | 'education'
 
