@@ -12,11 +12,11 @@ import Footer from './components/Footer'
 function HomePage() {
   return (
     <>
+      <Education />
       <Hero />
       <Skills />
       <Experience />
       <Projects />
-      <Education />
     </>
   )
 }

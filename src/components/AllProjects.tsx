@@ -28,6 +28,15 @@ export default function AllProjects() {
                   </li>
                 ))}
               </ul>
+              {(project.tags ?? []).length > 0 && (
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {(project.tags ?? []).map((tag) => (
+                    <span key={tag} className="rounded-full bg-[#f0e3cf] px-3 py-1 text-xs font-medium text-stone-700">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </a>
           ))}
         </div>

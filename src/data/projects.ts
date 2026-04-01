@@ -4,6 +4,7 @@ export type ProjectItem = {
   tech: string
   award?: string
   accomplishments: string[]
+  tags?: string[]
 }
 
 export const projects: ProjectItem[] = [
@@ -17,6 +18,7 @@ export const projects: ProjectItem[] = [
       'Processed 4-hour streams with Streamlink and FFmpeg to find and score highlight moments',
       'Published Reka-captioned reels within 2 minutes of live events, driving 1.5K views',
     ],
+    tags: ['Python', 'MCP', 'Claude Code'],
   },
   {
     name: 'StudyGuard',
@@ -28,6 +30,7 @@ export const projects: ProjectItem[] = [
       'Deployed OpenCV on Jetson Orin Nano to classify study states and stream telemetry to a dashboard',
       'Used Whisper and a vision-language model to safely unblock sites with human-in-the-loop review',
     ],
+    tags: ['Python', 'FastAPI', 'OpenCV', 'OpenAI API'],
   },
   {
     name: 'Schedule-AI',
@@ -38,6 +41,7 @@ export const projects: ProjectItem[] = [
       'Integrated a RAG pipeline using LangChain, Groq, ChromaDB, and embeddings',
       'Built a FastAPI + Turso backend to generate dynamic 4-year roadmaps',
     ],
+    tags: ['Python', 'FastAPI', 'React/Next.js', 'SQLAlchemy', 'LangChain', 'RAG', 'Groq'],
   },
   {
     name: 'EVIncible',
@@ -48,6 +52,7 @@ export const projects: ProjectItem[] = [
       'Collaborated with DataPigeon to prototype operations tooling for real charger monitoring',
       'Engineered a reasoning agent with LangGraph and Groq to automate maintenance workflows',
     ],
+    tags: ['React/Next.js', 'Groq'],
   },
   {
     name: 'OpenENV Hackathon',
@@ -58,6 +63,7 @@ export const projects: ProjectItem[] = [
       'Designed a two-phase pipeline: fast physics-sim pretraining, then Dolphin fine-tuning with PPO',
       'Implemented competitive reward shaping and controller abstractions for robust Fox agent training',
     ],
+    tags: ['Python', 'OpenAI API'],
   },
   {
     name: 'sow-agent',
@@ -68,6 +74,7 @@ export const projects: ProjectItem[] = [
       'Built a self-healing QA loop with retries for failed generations',
       'Integrated repo workflows to auto-open compliant pull requests',
     ],
+    tags: ['Python', 'FastAPI', 'AWS Bedrock', 'Git/GitHub'],
   },
   {
     name: 'Liturgy.Display',
@@ -78,6 +85,7 @@ export const projects: ProjectItem[] = [
       'Improved recognition quality for liturgical vocabulary via model tuning',
       'Delivered a real-time frontend over WebSockets for live operation',
     ],
+    tags: ['Python', 'FastAPI', 'HTML/CSS'],
   },
   {
     name: 'HotSpot',
@@ -88,6 +96,7 @@ export const projects: ProjectItem[] = [
       'Built geospatial visualization flows for incident awareness',
       'Automated resource curation using Gemini and census data',
     ],
+    tags: ['React/Next.js', 'HTML/CSS'],
   },
   {
     name: 'Syll.AI',
@@ -98,6 +107,7 @@ export const projects: ProjectItem[] = [
       'Built full-stack processing pipeline with cloud storage',
       'Integrated AI extraction and rewrite workflows for key deadlines and tasks',
     ],
+    tags: ['React/Next.js', 'FastAPI', 'HTML/CSS'],
   },
 ]
 

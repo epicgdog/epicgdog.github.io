@@ -29,6 +29,14 @@ export default function Education() {
                 <span>Coursework: Data Structures and Algorithms, Operating Systems, Network Security</span>
               </li>
             </ul>
+
+            <div className="mt-5 flex flex-wrap gap-2">
+              {['C', 'Java'].map((tag) => (
+                <span key={tag} className="rounded-full bg-[#f0e3cf] px-3 py-1 text-xs font-medium text-stone-700">
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </div>

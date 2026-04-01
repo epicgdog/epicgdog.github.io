@@ -10,6 +10,7 @@ export type ExperienceItem = {
   accomplishments?: string[]
   inProgress?: boolean
   focusAreas?: string[]
+  tags?: string[]
 }
 
 export const experiences: ExperienceItem[] = [
@@ -22,6 +23,7 @@ export const experiences: ExperienceItem[] = [
     category: 'engineer',
     inProgress: true,
     focusAreas: ['Microsoft Azure', 'Cloud Security'],
+    tags: ['Python', 'Linux/Unix'],
   },
   {
     title: 'Software Engineer Intern',
@@ -35,6 +37,7 @@ export const experiences: ExperienceItem[] = [
       'Ensured 99% uptime for 500+ jobs by automating Pytest checks in GitHub Actions CI/CD pipelines',
       'Reduced memory usage by 65% via Docker consolidation on a bare-metal Linux server',
     ],
+    tags: ['Python', 'SQL', 'Docker', 'Linux/Unix', 'Git/GitHub'],
   },
   {
     title: 'Game Developer',
@@ -48,6 +51,7 @@ export const experiences: ExperienceItem[] = [
       'Achieved sub-4ms hit registration in a custom FPS system through raycasting and client-side rendering',
       'Authored 100+ DevForum posts with 10+ accepted solutions, strengthening technical communication and debugging',
     ],
+    tags: ['LuaU'],
   },
   {
     title: 'Software Developer',
@@ -61,6 +65,7 @@ export const experiences: ExperienceItem[] = [
       'Implemented auto-generation of welcome images for a Discord bot serving a 3,000-member community',
       'Maintained 99% uptime for an LED LeetCode leaderboard, increasing engagement to 400+ solved problems',
     ],
+    tags: ['Go', 'JavaScript', 'React/Next.js'],
   },
   {
     title: 'Peer Mentor',
@@ -74,6 +79,7 @@ export const experiences: ExperienceItem[] = [
       'Directed 5 academic workshops with a 95%+ satisfaction score through strong facilitation',
       'Facilitated 50+ mentoring sessions across 7+ CS/MATH courses',
     ],
+    tags: ['C', 'Java'],
   },
   {
     title: 'Lead Instructor',
@@ -87,5 +93,6 @@ export const experiences: ExperienceItem[] = [
       'Created a 5-game LuaU curriculum adopted as standard training material for future camps',
       'Raised daily quiz scores from 56% to 84% using analogies and a final game gallery walk',
     ],
+    tags: ['LuaU'],
   },
 ]
