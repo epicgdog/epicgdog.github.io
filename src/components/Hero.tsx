@@ -5,11 +5,12 @@ export default function Hero() {
         <h1 className="mb-4 text-5xl font-bold text-stone-900 sm:text-6xl">
           Gerard Consuelo
         </h1>
-        <p className="mb-6 text-xl text-stone-700 sm:text-2xl">
-          Software Developer & CS Student at SJSU
+        <p className="mb-2 text-base font-medium text-stone-600 sm:text-lg">
+          B.S. Computer Science @ San Jose State University | GPA 3.93 | Graduation May 2027
         </p>
+        <p className="mb-6 text-xl text-stone-700 sm:text-2xl">Backend Python Engineer Path | AI Ops + DevOps</p>
         <p className="mx-auto mb-8 max-w-2xl text-stone-600">
-          Building real-time systems, AI agents, and developer tools. Passionate about automation, distributed systems, and creating impactful software solutions.
+          Passionate about automation, distributed systems, and creating impactful software solutions. Building real-time systems, AI agents, and developer tools.
         </p>
         <div className="flex justify-center gap-4">
           <a

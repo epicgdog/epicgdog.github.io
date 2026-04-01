@@ -29,7 +29,7 @@ export default function Skills() {
             {[...marqueeItems, ...marqueeItems].map((skill, index) => (
               <span
                 key={`${skill}-${index}`}
-                className="rounded-full border border-[#d8ccb8] bg-[#f6ecdd] px-4 py-2 text-sm font-medium text-stone-700"
+                className="skill-pill rounded-full border border-[#d8ccb8] bg-[#f6ecdd] px-4 py-2 text-sm font-medium text-stone-700"
               >
                 {skill}
               </span>

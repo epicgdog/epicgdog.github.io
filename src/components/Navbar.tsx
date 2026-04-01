@@ -1,33 +1,55 @@
 import { useState } from 'react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 const navLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Education', href: '#education' },
+  { name: 'About', id: 'about' },
+  { name: 'Skills', id: 'skills' },
+  { name: 'Experience', id: 'experience' },
+  { name: 'Projects', id: 'projects' },
+  { name: 'Education', id: 'education' },
 ]
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const goToSection = (sectionId: string) => {
+    const scrollToTarget = () => {
+      const target = document.getElementById(sectionId)
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }
+    }
+
+    if (location.pathname !== '/') {
+      navigate('/')
+      window.setTimeout(scrollToTarget, 80)
+    } else {
+      scrollToTarget()
+    }
+
+    setIsOpen(false)
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-[#d9cfbe] bg-[#f8f2e8]/85 backdrop-blur-sm">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <a href="#about" className="text-xl font-bold text-gray-900">
+          <Link to="/" className="text-xl font-bold text-gray-900">
             GC
-          </a>
+          </Link>
 
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
+                type="button"
+                onClick={() => goToSection(link.id)}
                 className="text-stone-600 transition-colors hover:text-stone-900"
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </div>
 
@@ -51,14 +73,14 @@ export default function Navbar() {
         <div className="md:hidden border-t border-[#d9cfbe] bg-[#f8f2e8]">
           <div className="px-4 py-2 space-y-1">
             {navLinks.map((link) => (
-              <a
+              <button
                 key={link.name}
-                href={link.href}
+                type="button"
+                onClick={() => goToSection(link.id)}
                 className="block rounded-md px-3 py-2 text-stone-600 hover:bg-[#eee3d2] hover:text-stone-900"
-                onClick={() => setIsOpen(false)}
               >
                 {link.name}
-              </a>
+              </button>
             ))}
           </div>
         </div>

@@ -1,0 +1,91 @@
+export type ExperienceCategory = 'engineer' | 'education'
+
+export type ExperienceItem = {
+  title: string
+  company: string
+  iconLabel: string
+  location: string
+  period: string
+  category: ExperienceCategory
+  accomplishments?: string[]
+  inProgress?: boolean
+  focusAreas?: string[]
+}
+
+export const experiences: ExperienceItem[] = [
+  {
+    title: 'Cloud Engineer',
+    company: 'Pacific In Home Care LLC',
+    iconLabel: 'PIHC',
+    location: 'California',
+    period: 'Present',
+    category: 'engineer',
+    inProgress: true,
+    focusAreas: ['Microsoft Azure', 'Cloud Security'],
+  },
+  {
+    title: 'Software Engineer Intern',
+    company: 'SJSU College of Engineering',
+    iconLabel: 'SJSU',
+    location: 'San Jose, CA',
+    period: 'May 2025 -- Aug. 2025',
+    category: 'engineer',
+    accomplishments: [
+      'Architected a real-time Python and SQLite backend service for monitoring print jobs for 2,000+ users',
+      'Ensured 99% uptime for 500+ jobs by automating Pytest checks in GitHub Actions CI/CD pipelines',
+      'Reduced memory usage by 65% via Docker consolidation on a bare-metal Linux server',
+    ],
+  },
+  {
+    title: 'Game Developer',
+    company: 'Roblox',
+    iconLabel: 'ROBLOX',
+    location: 'Remote',
+    period: 'Aug. 2020 -- Aug. 2023',
+    category: 'engineer',
+    accomplishments: [
+      'Architected an NPC system in LuaU with shared pathfinding, scaling from 100 to 300+ agents under 15ms',
+      'Achieved sub-4ms hit registration in a custom FPS system through raycasting and client-side rendering',
+      'Authored 100+ DevForum posts with 10+ accepted solutions, strengthening technical communication and debugging',
+    ],
+  },
+  {
+    title: 'Software Developer',
+    company: 'Software and Computer Engineering Society (SCE)',
+    iconLabel: 'SCE',
+    location: 'San Jose, CA',
+    period: 'Aug. 2024 -- Present',
+    category: 'engineer',
+    accomplishments: [
+      'Developed an inventory management system in Go and React used by 300+ members for snack availability',
+      'Implemented auto-generation of welcome images for a Discord bot serving a 3,000-member community',
+      'Maintained 99% uptime for an LED LeetCode leaderboard, increasing engagement to 400+ solved problems',
+    ],
+  },
+  {
+    title: 'Peer Mentor',
+    company: 'Peer Connections',
+    iconLabel: 'PC',
+    location: 'San Jose, CA',
+    period: 'Aug. 2025 -- Present',
+    category: 'education',
+    accomplishments: [
+      'Mentored Calculus I workshop students with academic strategies, increasing pass rate by 15%',
+      'Directed 5 academic workshops with a 95%+ satisfaction score through strong facilitation',
+      'Facilitated 50+ mentoring sessions across 7+ CS/MATH courses',
+    ],
+  },
+  {
+    title: 'Lead Instructor',
+    company: 'theCoderSchool',
+    iconLabel: 'TCS',
+    location: 'Folsom, CA',
+    period: 'Jul. 2025',
+    category: 'education',
+    accomplishments: [
+      'Led a 15-student camp through close collaboration with TAs and parents',
+      'Created a 5-game LuaU curriculum adopted as standard training material for future camps',
+      'Raised daily quiz scores from 56% to 84% using analogies and a final game gallery walk',
+    ],
+  },
+]
