@@ -11,8 +11,12 @@ export default function AllExperience() {
           {experiences.map((exp) => (
             <article key={`${exp.title}-${exp.company}`} className="rounded-xl border border-[#d8cebc] bg-[#fffaf1] p-6">
               <div className="mb-3 flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#c8bca8] bg-[#f3e8d5] text-xs font-semibold text-stone-700">
-                  {exp.iconLabel}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#c8bca8] bg-[#f3e8d5] text-xs font-semibold text-stone-700">
+                  {exp.icon ? (
+                    <img src={exp.icon} alt={`${exp.company} logo`} className="h-full w-full object-cover" />
+                  ) : (
+                    exp.iconLabel
+                  )}
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-stone-900">{exp.title}</h3>

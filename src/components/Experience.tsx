@@ -18,6 +18,7 @@ export default function Experience() {
     <section id="experience" className="bg-[#f1e9db] px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
         <h2 className="mb-6 text-center text-3xl font-bold text-stone-900">Experience</h2>
+        <p className="mb-8 text-center text-stone-600">Education: B.S. Computer Science, San Jose State University (Graduation: May 2027)</p>
 
         <div className="mx-auto mb-8 flex w-fit rounded-full border border-[#d8cebc] bg-[#fff6e9] p-1">
           <button
@@ -51,8 +52,12 @@ export default function Experience() {
               className="group rounded-xl border border-[#d8cebc] bg-[#fffaf1] p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="mb-3 flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-[#c8bca8] bg-[#f3e8d5] text-xs font-semibold text-stone-700">
-                  {exp.iconLabel}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-full border border-[#c8bca8] bg-[#f3e8d5] text-xs font-semibold text-stone-700">
+                  {exp.icon ? (
+                    <img src={exp.icon} alt={`${exp.company} logo`} className="h-full w-full object-cover" />
+                  ) : (
+                    exp.iconLabel
+                  )}
                 </div>
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-stone-900">{exp.title}</h3>

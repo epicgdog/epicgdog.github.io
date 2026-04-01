@@ -16,11 +16,9 @@ export default function Skills() {
   }, [hovered])
 
   return (
-    <section id="skills" className="bg-[#efe6d8] px-4 py-20 sm:px-6 lg:px-8">
+    <section id="skills" className="bg-[#efe6d8] px-4 py-8 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-6xl">
-        <h2 className="mb-8 text-center text-3xl font-bold text-stone-900">Technical Skills</h2>
-
-        <div className="relative mb-4 overflow-hidden rounded-2xl border border-[#d7cbb7] bg-[#fff9ee] py-6">
+        <div className="relative overflow-hidden rounded-2xl border border-[#d7cbb7] bg-[#fff9ee] py-5">
           <div className="pointer-events-none absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#fff9ee] to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[#fff9ee] to-transparent" />
 
@@ -46,8 +44,6 @@ export default function Skills() {
             ))}
           </div>
         </div>
-
-        <p className="text-center text-sm text-stone-600">Hover a skill to see where it is used.</p>
       </div>
 
       {hovered && (

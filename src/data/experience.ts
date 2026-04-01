@@ -1,8 +1,14 @@
+import pacificInHomeCareLogo from '../assets/pacificinhomecare.png'
+import sjsuLogo from '../assets/sjsu.png'
+import sceLogo from '../assets/sce.png'
+import robloxLogo from '../assets/roblox.svg'
+
 export type ExperienceCategory = 'engineer' | 'education'
 
 export type ExperienceItem = {
   title: string
   company: string
+  icon?: string
   iconLabel: string
   location: string
   period: string
@@ -17,6 +23,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'Cloud Engineer',
     company: 'Pacific In Home Care LLC',
+    icon: pacificInHomeCareLogo,
     iconLabel: 'PIHC',
     location: 'California',
     period: 'Present',
@@ -28,6 +35,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'Software Engineer Intern',
     company: 'SJSU College of Engineering',
+    icon: sjsuLogo,
     iconLabel: 'SJSU',
     location: 'San Jose, CA',
     period: 'May 2025 -- Aug. 2025',
@@ -42,6 +50,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'Game Developer',
     company: 'Roblox',
+    icon: robloxLogo,
     iconLabel: 'ROBLOX',
     location: 'Remote',
     period: 'Aug. 2020 -- Aug. 2023',
@@ -56,6 +65,7 @@ export const experiences: ExperienceItem[] = [
   {
     title: 'Software Developer',
     company: 'Software and Computer Engineering Society (SCE)',
+    icon: sceLogo,
     iconLabel: 'SCE',
     location: 'San Jose, CA',
     period: 'Aug. 2024 -- Present',

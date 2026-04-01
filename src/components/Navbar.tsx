@@ -6,7 +6,6 @@ const navLinks = [
   { name: 'Skills', id: 'skills' },
   { name: 'Experience', id: 'experience' },
   { name: 'Projects', id: 'projects' },
-  { name: 'Education', id: 'education' },
 ]
 
 export default function Navbar() {
