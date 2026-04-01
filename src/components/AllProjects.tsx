@@ -50,7 +50,6 @@ export default function AllProjects() {
                 </div>
               )}
               <h3 className="mb-2 text-xl font-semibold text-stone-900 transition-colors group-hover:text-amber-700">{project.name}</h3>
-              <p className="mb-4 text-sm text-stone-600">{project.tech}</p>
               <ul className="space-y-2">
                 {project.accomplishments.map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-stone-700">

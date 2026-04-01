@@ -142,7 +142,6 @@ export default function Projects() {
                       </span>
                     )}
 
-                    <p className="mb-2 text-xs text-stone-600">{project.tech}</p>
                     <ul className="space-y-1.5">
                       {project.accomplishments.slice(0, 2).map((item) => (
                         <li key={item} className="flex items-start gap-1.5 text-xs text-stone-700">

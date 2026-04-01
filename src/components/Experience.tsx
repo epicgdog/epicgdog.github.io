@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useMemo, useState } from 'react'
 import { experiences, type ExperienceCategory } from '../data/experience'
 
@@ -77,8 +76,8 @@ export default function Experience() {
               ) : (
                 <ul className="mt-[14px] space-y-1">
                   {(exp.accomplishments ?? []).map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-stone-700">
-                      <span className="mt-1.5 shrink-0 text-amber-700">•</span>
+                    <li key={item} className="flex items-start gap-2 text-sm text-stone-700">
+                      <span className="mt-1 shrink-0 text-amber-700">•</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -96,15 +95,6 @@ export default function Experience() {
               )}
             </article>
           ))}
-        </div>
-
-        <div className="mt-[30px] text-center">
-          <Link
-            to="/experience"
-            className="inline-flex items-center rounded-full border border-[#c7bba7] bg-[#fff2df] px-[18px] py-[6px] text-sm font-medium text-stone-800 transition hover:bg-[#f3e3cd]"
-          >
-            Show more experiences
-          </Link>
         </div>
       </div>
     </section>

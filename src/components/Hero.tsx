@@ -112,6 +112,9 @@ export default function Hero() {
           <p className="mb-[30px] max-w-2xl text-left text-stone-600">
             Passionate about automation, distributed systems, and creating impactful software solutions. Building real-time systems, AI agents, and developer tools.
           </p>
+          <p className="mb-[8px] text-left text-sm text-stone-600">
+            Have {totalContributions} contributions in the last 3 months
+          </p>
           <p className="mb-[18px] text-left text-sm text-stone-500">San Jose, CA</p>
           <div className="flex flex-wrap gap-[14px]">
           <a
@@ -181,9 +184,6 @@ export default function Hero() {
                 ))}
               </div>
             )}
-            <p className="mt-3 text-center text-sm text-stone-700">
-              {totalContributions} contributions in the last 3 months
-            </p>
           </div>
         </div>
       </div>

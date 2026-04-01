@@ -1,4 +1,4 @@
-@import url('https://fonts.cdnfonts.com/css/soria');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -11,7 +11,8 @@ html {
 h1,
 h2,
 h3 {
-  font-family: 'Soria', Georgia, serif;
+  font-family: 'Libre Baskerville', Georgia, serif;
+  text-transform: none;
 }
 
 @keyframes skillsScroll {
