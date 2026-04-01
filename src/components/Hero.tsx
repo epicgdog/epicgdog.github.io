@@ -109,7 +109,7 @@ export default function Hero() {
         </div>
         </div>
 
-        <div className="mx-auto flex h-[320px] w-[320px] items-center justify-center bg-white p-4 lg:mx-0">
+        <div className="mx-auto flex h-[320px] w-[320px] items-center justify-center bg-[#ece2d2] p-4 lg:mx-0">
           {contributions.length > 0 ? (
             <div
               className="grid gap-[3px]"
