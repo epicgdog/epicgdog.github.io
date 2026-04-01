@@ -10,6 +10,7 @@ const GRID_CELLS = 91
 export default function Hero() {
   const [contributions, setContributions] = React.useState<ContributionDay[]>([])
   const [visibleSquares, setVisibleSquares] = React.useState(0)
+  const [isCommitAnimationReady, setIsCommitAnimationReady] = React.useState(false)
 
   React.useEffect(() => {
     const sources = [
@@ -59,21 +60,34 @@ export default function Hero() {
     const totalSquares = contributions.length > 0 ? GRID_CELLS : 0
     if (totalSquares === 0) {
       setVisibleSquares(0)
+      setIsCommitAnimationReady(false)
       return
     }
 
+    setIsCommitAnimationReady(false)
     setVisibleSquares(0)
-    const timer = window.setInterval(() => {
-      setVisibleSquares((current) => {
-        if (current >= totalSquares) {
-          window.clearInterval(timer)
-          return totalSquares
-        }
-        return current + 1
-      })
-    }, 16)
+    let timer: number | null = null
+    const frame = window.requestAnimationFrame(() => {
+      setIsCommitAnimationReady(true)
+      timer = window.setInterval(() => {
+        setVisibleSquares((current) => {
+          if (current >= totalSquares) {
+            if (timer !== null) {
+              window.clearInterval(timer)
+            }
+            return totalSquares
+          }
+          return current + 1
+        })
+      }, 16)
+    })
 
-    return () => window.clearInterval(timer)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      if (timer !== null) {
+        window.clearInterval(timer)
+      }
+    }
   }, [contributions])
 
   const getIntensity = (count: number) => {
@@ -144,13 +158,13 @@ export default function Hero() {
                 }}
               >
                 {paddedContributions.map((day, i) => (
-                  <div
-                    key={i}
-                    className={`h-4 w-4 transition-opacity duration-150 ${getIntensity(day.count)} ${
-                      i < visibleSquares ? 'opacity-100' : 'opacity-0'
-                    }`}
-                    title={day.date ? `${day.count} contributions` : ''}
-                  />
+                <div
+                  key={i}
+                  className={`h-4 w-4 transition-opacity duration-150 ${getIntensity(day.count)} ${
+                    isCommitAnimationReady && i < visibleSquares ? 'opacity-100' : 'opacity-0'
+                  }`}
+                  title={day.date ? `${day.count} contributions` : ''}
+                />
                 ))}
               </div>
             ) : (
