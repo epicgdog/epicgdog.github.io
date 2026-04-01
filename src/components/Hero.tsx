@@ -106,7 +106,7 @@ export default function Hero() {
     <section id="about" className="bg-[#ece2d2] px-4 pb-[78px] pt-[126px] sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.15fr_1fr] lg:items-center">
         <div className="space-y-5">
-          <h1 className="text-left text-6xl font-bold text-stone-900 sm:text-7xl">
+          <h1 className="whitespace-nowrap text-left text-6xl font-bold text-stone-900 sm:text-7xl">
             Gerard Consuelo
           </h1>
           <p className="max-w-2xl text-left text-base leading-relaxed text-stone-700">
